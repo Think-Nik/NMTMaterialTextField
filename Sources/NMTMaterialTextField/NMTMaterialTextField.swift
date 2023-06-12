@@ -38,9 +38,10 @@ import UIKit
         }
     }
     
+    @IBInspectable var regex: String = ""
+    
     public var text: String = ""
     private var isTextFieldValueOptional: Bool = false
-    private var isValid: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,12 +77,6 @@ import UIKit
         lblError.shake(horizontally: true)
         enablePlaceholder(enable: false)
     }
-    
-    public func validateField(with regex: String) {        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        isTextFieldValueOptional = false
-        isValid = predicate.evaluate(with: txtField.text)
-    }
 }
 
 extension NMTMaterialTextField: UITextFieldDelegate {
@@ -96,7 +91,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         text = textField.text ?? ""
         if textField.text == "" && !isTextFieldValueOptional {
             showError()
-        } else if !isValid {
+        } else if !validateField() {
             showError()
         }
     }
@@ -115,6 +110,12 @@ extension NMTMaterialTextField: UITextFieldDelegate {
             lblPlaceholder.shake(horizontally: false)
         }
         lblPlaceholder.alpha = !enable ? 0.0 : 1.0
+    }
+    
+    private func validateField() ->  Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        isTextFieldValueOptional = false
+        return predicate.evaluate(with: txtField.text)
     }
 }
 
