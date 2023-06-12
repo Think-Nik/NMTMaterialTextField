@@ -90,11 +90,9 @@ extension NMTMaterialTextField: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         text = textField.text ?? ""
         if !isTextFieldValueOptional {
-            if textField.text == "" {
+            if textField.text == "" || !validateField() {
                 showError()
             }
-        } else if !validateField() {
-            showError()
         }
     }
     
