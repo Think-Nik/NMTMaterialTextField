@@ -79,7 +79,7 @@ import UIKit
     
     public func validateField(with regex: String) {        
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        isValid = predicate.evaluate(with: regex)
+        isValid = predicate.evaluate(with: txtField.text)
     }
 }
 
