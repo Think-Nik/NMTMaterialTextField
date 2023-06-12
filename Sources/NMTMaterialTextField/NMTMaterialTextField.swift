@@ -79,6 +79,7 @@ import UIKit
     
     public func validateField(with regex: String) {        
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        isTextFieldValueOptional = false
         isValid = predicate.evaluate(with: txtField.text)
     }
 }
@@ -93,13 +94,19 @@ extension NMTMaterialTextField: UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         text = textField.text ?? ""
-        if textField.text == "" && isTextFieldValueOptional && isValid {
-            lblError.isHidden = false
-            viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
-            viewForTextField.shake(horizontally: true)
-            lblError.shake(horizontally: true)
-            enablePlaceholder(enable: false)
+        if textField.text == "" && !isTextFieldValueOptional {
+            showError()
+        } else if !isValid {
+            showError()
         }
+    }
+    
+    private func showError() {
+        lblError.isHidden = false
+        viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
+        viewForTextField.shake(horizontally: true)
+        lblError.shake(horizontally: true)
+        enablePlaceholder(enable: false)
     }
     
     private func enablePlaceholder(enable: Bool) {
