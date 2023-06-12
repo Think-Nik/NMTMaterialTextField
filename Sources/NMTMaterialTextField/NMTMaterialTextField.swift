@@ -38,12 +38,6 @@ import UIKit
         }
     }
     
-    @IBInspectable var regex: String = "" {
-        didSet {
-            isTextFieldValueOptional = false
-        }
-    }
-    
     public var text: String = ""
     private var isTextFieldValueOptional: Bool = false
     
@@ -94,7 +88,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         text = textField.text ?? ""
         if !isTextFieldValueOptional {
-            if textField.text == "" || !validateField() {
+            if textField.text == "" {
                 showError()
             }
         }
@@ -114,12 +108,6 @@ extension NMTMaterialTextField: UITextFieldDelegate {
             lblPlaceholder.shake(horizontally: false)
         }
         lblPlaceholder.alpha = !enable ? 0.0 : 1.0
-    }
-    
-    private func validateField() ->  Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        isTextFieldValueOptional = false
-        return predicate.evaluate(with: txtField.text)
     }
 }
 
