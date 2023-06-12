@@ -38,7 +38,11 @@ import UIKit
         }
     }
     
-    @IBInspectable var regex: String = ""
+    @IBInspectable var regex: String = "" {
+        didSet {
+            isTextFieldValueOptional = false
+        }
+    }
     
     public var text: String = ""
     private var isTextFieldValueOptional: Bool = false
