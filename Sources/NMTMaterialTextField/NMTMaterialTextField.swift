@@ -40,6 +40,7 @@ import UIKit
     
     public var text: String = ""
     private var isTextFieldValueOptional: Bool = false
+    private var isValid: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,6 +76,11 @@ import UIKit
         lblError.shake(horizontally: true)
         enablePlaceholder(enable: false)
     }
+    
+    public func validateField(with regex: String) {        
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        isValid = predicate.evaluate(with: regex)
+    }
 }
 
 extension NMTMaterialTextField: UITextFieldDelegate {
@@ -87,7 +93,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         text = textField.text ?? ""
-        if textField.text == "" && isTextFieldValueOptional {
+        if textField.text == "" && isTextFieldValueOptional && isValid {
             lblError.isHidden = false
             viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
             viewForTextField.shake(horizontally: true)
