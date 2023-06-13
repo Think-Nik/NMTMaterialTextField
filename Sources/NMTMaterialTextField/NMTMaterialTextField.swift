@@ -26,7 +26,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var isOptional: Bool = false {
+    @IBInspectable var isOptional: Bool = true {
         didSet {
             isTextFieldValueOptional = isOptional
         }
@@ -39,7 +39,7 @@ import UIKit
     }
     
     public var text: String = ""
-    private var isTextFieldValueOptional: Bool = false
+    private var isTextFieldValueOptional: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
