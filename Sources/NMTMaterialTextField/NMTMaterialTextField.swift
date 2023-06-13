@@ -20,6 +20,7 @@ import UIKit
         didSet {
             viewForTextField.layer.borderColor = borderColor.cgColor
             lblPlaceholder.textColor = borderColor
+            imgIcon.tintColor = borderColor
         }
     }
     @IBInspectable var error: String = "Please enter value" {
@@ -43,8 +44,10 @@ import UIKit
     @IBInspectable var isDisable: Bool = false {
         didSet {
             enablePlaceholder(enable: text != "")
-            borderColor = .lightGray
-            txtField.isUserInteractionEnabled = false
+            if isDisable {
+                borderColor = .lightGray
+            }
+            txtField.isUserInteractionEnabled = !isDisable
         }
     }
     
@@ -86,6 +89,11 @@ import UIKit
         viewForTextField.layer.borderWidth = 1.0
         viewForTextField.layer.cornerRadius = 8
         lblPlaceholder.alpha = 0.0
+        if icon == nil {
+            imgIcon.tintColor = borderColor
+            leadingIcon.constant = 0
+            imgIcon.frame.size.width = 0
+        }
     }
     
     public func showError(error: String) {
