@@ -113,6 +113,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         enablePlaceholder(enable: true)
         viewForTextField.layer.borderColor = borderColor.cgColor
+        imgIcon.tintColor = borderColor
         lblError.isHidden = true
     }
     
@@ -133,6 +134,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
         viewForTextField.shake(horizontally: true)
         lblError.shake(horizontally: true)
+        imgIcon.tintColor = .systemRed
     }
     
     private func enablePlaceholder(enable: Bool) {
