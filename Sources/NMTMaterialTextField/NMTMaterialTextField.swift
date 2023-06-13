@@ -21,6 +21,7 @@ import UIKit
             viewForTextField.layer.borderColor = borderColor.cgColor
             lblPlaceholder.textColor = borderColor
             imgIcon.tintColor = borderColor
+            txtField.tintColor = borderColor
         }
     }
     @IBInspectable var error: String = "Please enter value" {
@@ -53,10 +54,7 @@ import UIKit
     
     @IBInspectable var icon: UIImage? = nil {
         didSet {
-            imgIcon.image = icon
-            imgIcon.tintColor = borderColor
-            leadingIcon.constant = icon == nil ? 0 : 10
-            imgIcon.frame.size.width = icon == nil ? 0 : 20
+            setIcon()
         }
     }
     
@@ -87,6 +85,7 @@ import UIKit
         viewForTextField.layer.borderWidth = 1.0
         viewForTextField.layer.cornerRadius = 8
         lblPlaceholder.alpha = 0.0
+        setIcon()
     }
     
     public func showError(error: String) {
@@ -96,6 +95,13 @@ import UIKit
         viewForTextField.shake(horizontally: true)
         lblError.shake(horizontally: true)
         enablePlaceholder(enable: false)
+    }
+    
+    private func setIcon() {
+        imgIcon.image = icon
+        imgIcon.tintColor = borderColor
+        leadingIcon.constant = icon == nil ? 0 : 10
+        imgIcon.frame.size.width = icon == nil ? 0 : 20
     }
 }
 
@@ -111,6 +117,7 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         text = textField.text ?? ""
         if !isTextFieldValueOptional {
             if textField.text == "" {
+                enablePlaceholder(enable: false)
                 showError()
             }
         } else if textField.text == "" {
