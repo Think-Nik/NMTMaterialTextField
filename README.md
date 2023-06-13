@@ -34,35 +34,34 @@ Add the Swift package to your Xcode project:
 Go to Xcode, open your project, from the file menu click on "Add Package" menu. Enter the above URL or search for the package, then click "Next" and "Finish" to add it to your project.
 
 
-Import the package in your View Controller:
+#### Import the package in your View Controller:
 
-Open the View Controller where you want to use the custom text field.
+- Open the View Controller where you want to use the custom text field.
 Add the import statement at the top of the file to import the package: import NMTMaterialTextField.
 
 
-Open your Storyboard:
+#### Open your Storyboard:
 
-Open the Storyboard file that contains the view where you want to use the custom text field.
-Add a regular UIView from the Object Library:
+- Open the Storyboard file that contains the view where you want to use the custom text field. Add a regular UIView from the Object Library:
 
-Drag and drop a regular UIView onto your view controller's scene in the Storyboard.
+- Drag and drop a regular UIView onto your view controller's scene in the Storyboard.
 
-Change the UIView's class to the custom text field class:
+- Change the UIView's class to the custom text field class:
 
-Select the UIView in the storyboard scene.
-In the Identity Inspector panel (on the right side of Xcode), find the "Custom Class" section.
-Change the Class field to the custom text field class provided by the package (e.g., NMTMaterialTextField).
+- Select the UIView in the storyboard scene. In the Identity Inspector panel (on the right side of Xcode), find the "Custom Class" section. Change the Class field to the custom text field class provided by the package (e.g., NMTMaterialTextField).
 
-Customize the text field's properties:
+- Customize the text field's properties:
 
-With the custom text field selected in the storyboard scene, you can modify its properties using the Attributes Inspector panel (on the right side of Xcode).
-Depending on the custom text field package, you may have various properties available to customize, such as placeholder text, error text, isSecureText, placeholder text color, border color, icon, isOptional, isDisable etc.
+- With the custom text field selected in the storyboard scene, you can modify its properties using the Attributes Inspector panel (on the right side of Xcode).
+
+- Depending on the custom text field package, you may have various properties available to customize, such as placeholder text, error text, isSecureText, placeholder text color, border color, icon, isOptional, isDisable etc.
+
 
 ![](/Sources/Resources/properties.png)
 
-Connect the text field to your View Controller:
 
-Control-drag from the custom text field in the storyboard to the View Controller's code to create an outlet or action connection.
-Specify a name for the connection (e.g., @IBOutlet var customTextField: NMTMaterialTextField).
+- Connect the text field to your View Controller:
 
-By following these steps, you should be able to integrate and use the custom text field Swift package within your iOS app's Storyboard-based interface. 
+- Control-drag from the custom text field in the storyboard to the View Controller's code to create an outlet or action connection. Specify a name for the connection (e.g., @IBOutlet var customTextField: NMTMaterialTextField).
+
+#### By following these steps, you should be able to integrate and use the custom text field Swift package within your iOS app's Storyboard-based interface. 
