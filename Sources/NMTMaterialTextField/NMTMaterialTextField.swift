@@ -42,18 +42,17 @@ import UIKit
     
     @IBInspectable var isDisable: Bool = false {
         didSet {
-            if text != "" {
-                enablePlaceholder(enable: true)
-                borderColor = .lightGray
-                txtField.isUserInteractionEnabled = false
-            }
+            enablePlaceholder(enable: text != "")
+            borderColor = .lightGray
+            txtField.isUserInteractionEnabled = false
         }
     }
     
     @IBInspectable var icon: UIImage? = nil {
         didSet {
             imgIcon.image = icon
-            if icon != nil {
+            if icon == nil {
+                imgIcon.tintColor = borderColor
                 leadingIcon.constant = 0
                 imgIcon.frame.size.width = 0
             }
