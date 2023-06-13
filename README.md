@@ -28,7 +28,7 @@ To use a custom text field Swift package in an iOS app with Storyboard, you can 
 Add the Swift package to your Xcode project:
 
 ```swift
-"https://github.com/Think-Nik/NMTMaterialTextField/"
+https://github.com/Think-Nik/NMTMaterialTextField/
 ```
 
 Go to Xcode, open your project, from the file menu click on "Add Package" menu. Enter the above URL or search for the package, then click "Next" and "Finish" to add it to your project.
