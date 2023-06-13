@@ -5,8 +5,10 @@ import UIKit
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var lblPlaceholder: UILabel!
     @IBOutlet weak var viewForTextField: UIView!
+    @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var leadingIcon: NSLayoutConstraint!
     
     @IBInspectable var placeholder: String = "Enter Value" {
         didSet {
@@ -35,6 +37,26 @@ import UIKit
     @IBInspectable var isSecureText: Bool = false {
         didSet {
             txtField.isSecureTextEntry = isSecureText
+        }
+    }
+    
+    @IBInspectable var isDisable: Bool = false {
+        didSet {
+            if text != "" {
+                enablePlaceholder(enable: true)
+                borderColor = .lightGray
+                txtField.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    @IBInspectable var icon: UIImage? = nil {
+        didSet {
+            imgIcon.image = icon
+            if icon != nil {
+                leadingIcon.constant = 0
+                imgIcon.frame.size.width = 0
+            }
         }
     }
     
@@ -91,6 +113,8 @@ extension NMTMaterialTextField: UITextFieldDelegate {
             if textField.text == "" {
                 showError()
             }
+        } else if textField.text == "" {
+            enablePlaceholder(enable: false)
         }
     }
     
@@ -99,12 +123,12 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
         viewForTextField.shake(horizontally: true)
         lblError.shake(horizontally: true)
-        enablePlaceholder(enable: false)
+        enablePlaceholder(enable: true)
     }
     
     private func enablePlaceholder(enable: Bool) {
         txtField.placeholder = !enable ? placeholder : nil
-        if txtField.text == "" {
+        if txtField.text == "" && !isTextFieldValueOptional {
             lblPlaceholder.shake(horizontally: false)
         }
         lblPlaceholder.alpha = !enable ? 0.0 : 1.0
