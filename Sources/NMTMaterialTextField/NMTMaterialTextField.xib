@@ -15,6 +15,7 @@
                 <outlet property="lblError" destination="sVJ-XY-xZU" id="lrT-i7-nTf"/>
                 <outlet property="lblPlaceholder" destination="Jxz-3Z-Ary" id="WTQ-sY-Nm7"/>
                 <outlet property="leadingIcon" destination="dgf-J3-bdv" id="hlG-6T-kj6"/>
+                <outlet property="leadingPlaceholder" destination="wO6-2e-Pcf" id="a8x-dY-Z2d"/>
                 <outlet property="txtField" destination="dbN-3d-Uum" id="iGf-wZ-fIj"/>
                 <outlet property="viewForTextField" destination="ZWj-sj-5aK" id="9Jc-di-zjs"/>
                 <outlet property="widthIcon" destination="Fbq-Rr-eV2" id="xie-tm-SfV"/>

@@ -8,6 +8,7 @@ import UIKit
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var leadingPlaceholder: NSLayoutConstraint!
     @IBOutlet weak var widthIcon: NSLayoutConstraint!
     @IBOutlet weak var leadingIcon: NSLayoutConstraint!
     
@@ -103,6 +104,7 @@ import UIKit
         imgIcon.tintColor = borderColor
         leadingIcon.constant = icon == nil ? 0 : 10
         widthIcon.constant = icon == nil ? 0 : 20
+        leadingIcon.constant = icon == nil ? 20 : 40
     }
 }
 
