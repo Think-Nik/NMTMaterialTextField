@@ -8,6 +8,7 @@ import UIKit
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var widthIcon: NSLayoutConstraint!
     @IBOutlet weak var leadingIcon: NSLayoutConstraint!
     
     @IBInspectable var placeholder: String = "Enter Value" {
@@ -101,7 +102,7 @@ import UIKit
         imgIcon.image = icon
         imgIcon.tintColor = borderColor
         leadingIcon.constant = icon == nil ? 0 : 10
-        imgIcon.frame.size.width = icon == nil ? 0 : 20
+        widthIcon.constant = icon == nil ? 0 : 20
     }
 }
 
@@ -130,14 +131,14 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
         viewForTextField.shake(horizontally: true)
         lblError.shake(horizontally: true)
-        enablePlaceholder(enable: true)
+//        enablePlaceholder(enable: true)
     }
     
     private func enablePlaceholder(enable: Bool) {
         txtField.placeholder = !enable ? placeholder : nil
-        if txtField.text == "" && !isTextFieldValueOptional {
+//        if txtField.text == "" && !isTextFieldValueOptional {
             lblPlaceholder.shake(horizontally: false)
-        }
+//        }
         lblPlaceholder.alpha = !enable ? 0.0 : 1.0
     }
 }
