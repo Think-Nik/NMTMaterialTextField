@@ -2,6 +2,8 @@
 
 NMTMaterialTextField is an iOS Swift package that provides a customizable Material Design-inspired text field component for iOS applications. It is designed to offer various modifications and enhance the user experience when collecting user input.
 
+![](/NMTMaterialTextField/Resources/showcase.gif)
+
 Key features of NMTMaterialTextField include:
 
 1. Customizable Design: The package provides a wide range of customization options, allowing developers to tailor the appearance of the text field to fit their app's visual style. Users can modify properties such as the background color, border color, placeholder text color, and more.
