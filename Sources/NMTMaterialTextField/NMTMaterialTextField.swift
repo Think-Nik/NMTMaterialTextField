@@ -104,7 +104,7 @@ import UIKit
         imgIcon.tintColor = borderColor
         leadingIcon.constant = icon == nil ? 0 : 10
         widthIcon.constant = icon == nil ? 0 : 20
-        leadingIcon.constant = icon == nil ? 20 : 40
+        leadingPlaceholder.constant = icon == nil ? 20 : 40
     }
 }
 
@@ -133,14 +133,11 @@ extension NMTMaterialTextField: UITextFieldDelegate {
         viewForTextField.layer.borderColor = UIColor.systemRed.cgColor
         viewForTextField.shake(horizontally: true)
         lblError.shake(horizontally: true)
-//        enablePlaceholder(enable: true)
     }
     
     private func enablePlaceholder(enable: Bool) {
         txtField.placeholder = !enable ? placeholder : nil
-//        if txtField.text == "" && !isTextFieldValueOptional {
-            lblPlaceholder.shake(horizontally: false)
-//        }
+        lblPlaceholder.shake(horizontally: false)
         lblPlaceholder.alpha = !enable ? 0.0 : 1.0
     }
 }
