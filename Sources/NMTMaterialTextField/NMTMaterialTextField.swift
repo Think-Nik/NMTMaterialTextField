@@ -54,11 +54,9 @@ import UIKit
     @IBInspectable var icon: UIImage? = nil {
         didSet {
             imgIcon.image = icon
-            if icon == nil {
-                imgIcon.tintColor = borderColor
-                leadingIcon.constant = 0
-                imgIcon.frame.size.width = 0
-            }
+            imgIcon.tintColor = borderColor
+            leadingIcon.constant = icon == nil ? 0 : 10
+            imgIcon.frame.size.width = icon == nil ? 0 : 20
         }
     }
     
@@ -89,11 +87,6 @@ import UIKit
         viewForTextField.layer.borderWidth = 1.0
         viewForTextField.layer.cornerRadius = 8
         lblPlaceholder.alpha = 0.0
-        if icon == nil {
-            imgIcon.tintColor = borderColor
-            leadingIcon.constant = 0
-            imgIcon.frame.size.width = 0
-        }
     }
     
     public func showError(error: String) {
